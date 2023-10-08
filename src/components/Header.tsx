@@ -14,6 +14,7 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import React from 'react';
+import SignIn from './SignIn';
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -55,13 +56,16 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function Header() {
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between p-2">
-      <div className="border-4 border-blue-600 px-4 py-2">
-        Younaroo_Dev_Stack
+    <div>
+      <div className="flex flex-col sm:flex-row items-center justify-between p-2">
+        <Link href="/" className="border-4 border-blue-600 px-4 py-2 font-bold">
+          Youngaroo_Dev_Stack
+        </Link>
+        <SignIn />
       </div>
       <div>
         <NavigationMenu>
-          <NavigationMenuList className="flex flex-col sm:flex-row justify-center items-center">
+          <NavigationMenuList className="flex flex-col sm:flex-row pt-8">
             <NavigationMenuItem>
               <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
               <NavigationMenuContent>
