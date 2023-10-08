@@ -1,6 +1,8 @@
 import TodoList from './_components/TodoList';
+import { serverClient } from './_trpc/serverClient';
 
-export default function Home() {
+export default async function Home() {
+  const todos = await serverClient.getTodos();
   return (
     <div className="flex-1 py-8 px-2">
       <h1 className="text-2xl font-bold">My Dev Stacks</h1>
@@ -9,7 +11,7 @@ export default function Home() {
         TailwindCSS, TanStack Query, NextAuth,
       </p>
       <h2 className="py-4 font-bold">Test Area</h2>
-      <TodoList />
+      <TodoList initialTodos={todos} />
     </div>
   );
 }
