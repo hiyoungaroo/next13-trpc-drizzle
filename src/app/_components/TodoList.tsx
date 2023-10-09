@@ -28,6 +28,16 @@ const TodoList = ({
     },
   });
   const [content, setContent] = useState('');
+
+  const handleKeyPress = (e: any) => {
+    if (e.key === 'Enter') {
+      // addTodo mutation 실행
+      addTodo.mutate(content);
+      // 입력창 비우기
+      setContent('');
+    }
+  };
+
   return (
     <div className="">
       <div className="flex pb-4 items-center ">
@@ -36,6 +46,7 @@ const TodoList = ({
           type="text"
           value={content}
           onChange={(e) => setContent(e.target.value)}
+          onKeyPress={handleKeyPress}
         />
         <Button
           variant="outline"
@@ -55,9 +66,9 @@ const TodoList = ({
         {getTodos.data?.map((todo) => (
           <div
             key={todo.id}
-            className="flex justify-between items-center space-x-2 space-y-2 text-2xl border-b-2 border-blue-400 pb-2"
+            className="flex space-x-2 justify-between items-center space-y-2 text-2xl border-b-2 border-gray-300 pb-2"
           >
-            <div className="items-center justify-center">
+            <div>
               <Checkbox id="terms" />
               <Label className="ml-4">{todo.content}</Label>
             </div>
@@ -74,7 +85,10 @@ const TodoList = ({
           </div>
         ))}
       </div>
-      <div className="text-sm text-gray-400 pt-20">
+      <div className="pt-20">
+        <h1>Json logs 🚀</h1>
+      </div>
+      <div className="text-sm text-gray-400">
         {JSON.stringify(getTodos.data)}
       </div>
     </div>

@@ -1,8 +1,8 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "6c384f9a-6725-4854-83f0-21b591fb5341",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "e0039171-5ee7-4e89-8d8a-6f905624fe42",
+  "prevId": "6c384f9a-6725-4854-83f0-21b591fb5341",
   "tables": {
     "todos": {
       "name": "todos",
@@ -26,11 +26,11 @@
           "primaryKey": false,
           "notNull": false
         },
-        "created_at": {
-          "name": "created_at",
+        "createdAt": {
+          "name": "createdAt",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": "now()"
         }
       },

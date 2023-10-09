@@ -16,7 +16,11 @@ export const appRouter = router({
     return await db.select().from(todos).orderBy(desc(todos.id));
   }),
   addTodo: publicProcedure.input(z.string()).mutation(async (opts) => {
-    await db.insert(todos).values({ content: opts.input, done: false });
+    await db.insert(todos).values({
+      content: opts.input,
+      done: false,
+      createdAt: new Date(),
+    });
     return true;
   }),
   deleteTodo: publicProcedure
@@ -28,7 +32,7 @@ export const appRouter = router({
         .returning({ deletedId: todos.id });
       console.log(del);
     }),
-  setDone: publicProcedure
+  updateTodo: publicProcedure
     .input(z.object({ id: z.number(), done: z.boolean() }))
     .mutation(async (opts) => {
       await db
